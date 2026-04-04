@@ -488,6 +488,7 @@ export default function LandingPage() {
           STATS BAR
          ════════════════════════════════════════════ */}
       <div
+        className="landing-stats-wrapper"
         style={{
           borderTop: '1px solid var(--border)',
           borderBottom: '1px solid var(--border)',
@@ -496,6 +497,7 @@ export default function LandingPage() {
         }}
       >
         <div
+          className="landing-stats-bar"
           style={{
             maxWidth: '1320px',
             margin: '0 auto',
@@ -529,6 +531,7 @@ export default function LandingPage() {
           HOW IT WORKS
          ════════════════════════════════════════════ */}
       <section
+        className="landing-section"
         style={{
           maxWidth: '1320px',
           margin: '0 auto',
@@ -589,6 +592,7 @@ export default function LandingPage() {
 
       {/* Divider */}
       <div
+        className="landing-divider"
         style={{
           maxWidth: '1320px',
           margin: '0 auto',
@@ -602,6 +606,7 @@ export default function LandingPage() {
           FEATURES
          ════════════════════════════════════════════ */}
       <section
+        className="landing-section"
         style={{
           maxWidth: '1320px',
           margin: '0 auto',
@@ -674,6 +679,7 @@ export default function LandingPage() {
 
       {/* Divider */}
       <div
+        className="landing-divider"
         style={{
           maxWidth: '1320px',
           margin: '0 auto',
@@ -688,6 +694,7 @@ export default function LandingPage() {
          ════════════════════════════════════════════ */}
       <section
         id="upload"
+        className="landing-section"
         style={{
           maxWidth: '1320px',
           margin: '0 auto',
@@ -814,6 +821,7 @@ export default function LandingPage() {
           FOOTER
          ════════════════════════════════════════════ */}
       <footer
+        className="landing-footer"
         style={{
           borderTop: '1px solid var(--border)',
           padding: '20px 48px',

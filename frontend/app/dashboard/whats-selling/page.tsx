@@ -223,14 +223,14 @@ export default function WhatsSellingPage() {
           {data.basket_rules.length > 0 && (
             <>
               <h3 style={{ color: 'var(--accent)', marginBottom: '18px' }}>Frequently Bought Together</h3>
-              <div style={{
+              <div className="overflow-x-mobile" style={{
                 backgroundColor: 'var(--surface)',
                 border: '1px solid var(--border)',
                 borderRadius: '20px',
                 overflow: 'hidden',
                 boxShadow: 'var(--shadow-sm)',
               }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '500px' }}>
                   <thead>
                     <tr style={{ borderBottom: '1px solid var(--border)' }}>
                       <th className="label-caps" style={{ textAlign: 'left', color: 'var(--accent)', padding: '14px 18px' }}>Item A</th>
