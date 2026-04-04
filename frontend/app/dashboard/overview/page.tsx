@@ -106,40 +106,40 @@ export default function OverviewPage() {
         <section style={{ marginBottom: '40px' }}>
           <h3 style={{ color: 'var(--accent)', marginBottom: '6px' }}>Period Comparison</h3>
           <p style={{ fontFamily: 'Raleway', fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '20px' }}>
-            {data.period_comparison.label_b} ({fmtRev(data.period_comparison.rev_b)}) vs {data.period_comparison.label_a} ({fmtRev(data.period_comparison.rev_a)})
+            {data.period_comparison!.label_b} ({fmtRev(data.period_comparison!.rev_b)}) vs {data.period_comparison!.label_a} ({fmtRev(data.period_comparison!.rev_a)})
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '24px' }}>
-            <DeltaPill value={data.period_comparison.revenue_delta_pct} label="Revenue" />
-            <DeltaPill value={data.period_comparison.orders_delta_pct} label="Orders" />
-            <DeltaPill value={data.period_comparison.aov_delta_pct} label="Avg Order Value" />
+            <DeltaPill value={data.period_comparison!.revenue_delta_pct} label="Revenue" />
+            <DeltaPill value={data.period_comparison!.orders_delta_pct} label="Orders" />
+            <DeltaPill value={data.period_comparison!.aov_delta_pct} label="Avg Order Value" />
           </div>
 
           {/* Risers / Fallers */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-            {data.period_comparison.top_risers.length > 0 && (
+            {data.period_comparison!.top_risers.length > 0 && (
               <div style={{
                 backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
                 borderLeft: '4px solid #16a34a', borderRadius: '20px',
                 padding: '20px 22px', boxShadow: 'var(--shadow-sm)',
               }}>
                 <div className="label-caps" style={{ color: '#16a34a', marginBottom: '12px' }}>Rising</div>
-                {data.period_comparison.top_risers.map((r, i) => (
-                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 0', borderBottom: i < data.period_comparison.top_risers.length - 1 ? '1px solid var(--border)' : 'none' }}>
+                {data.period_comparison!.top_risers.map((r, i) => (
+                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 0', borderBottom: i < (data.period_comparison?.top_risers?.length ?? 0) - 1 ? '1px solid var(--border)' : 'none' }}>
                     <span style={{ fontFamily: 'Raleway', fontSize: '0.85rem', color: 'var(--text-primary)' }}>{r.product}</span>
                     <span style={{ fontFamily: 'Raleway', fontWeight: 700, fontSize: '0.80rem', color: '#16a34a' }}>+{r.delta_pct.toFixed(1)}%</span>
                   </div>
                 ))}
               </div>
             )}
-            {data.period_comparison.top_fallers.length > 0 && (
+            {data.period_comparison!.top_fallers.length > 0 && (
               <div style={{
                 backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
                 borderLeft: '4px solid #dc2626', borderRadius: '20px',
                 padding: '20px 22px', boxShadow: 'var(--shadow-sm)',
               }}>
                 <div className="label-caps" style={{ color: '#dc2626', marginBottom: '12px' }}>Falling</div>
-                {data.period_comparison.top_fallers.map((r, i) => (
-                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 0', borderBottom: i < data.period_comparison.top_fallers.length - 1 ? '1px solid var(--border)' : 'none' }}>
+                {data.period_comparison!.top_fallers.map((r, i) => (
+                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 0', borderBottom: i < (data.period_comparison?.top_fallers?.length ?? 0) - 1 ? '1px solid var(--border)' : 'none' }}>
                     <span style={{ fontFamily: 'Raleway', fontSize: '0.85rem', color: 'var(--text-primary)' }}>{r.product}</span>
                     <span style={{ fontFamily: 'Raleway', fontWeight: 700, fontSize: '0.80rem', color: '#dc2626' }}>{r.delta_pct.toFixed(1)}%</span>
                   </div>
@@ -149,18 +149,18 @@ export default function OverviewPage() {
           </div>
 
           {/* New / Dropped products */}
-          {(data.period_comparison.new_products.length > 0 || data.period_comparison.dropped_products.length > 0) && (
+          {(data.period_comparison!.new_products.length > 0 || data.period_comparison!.dropped_products.length > 0) && (
             <div style={{ display: 'flex', gap: '12px', marginTop: '16px', flexWrap: 'wrap' }}>
-              {data.period_comparison.new_products.length > 0 && (
+              {data.period_comparison!.new_products.length > 0 && (
                 <div style={{ backgroundColor: 'rgba(22,163,74,0.06)', border: '1px solid rgba(22,163,74,0.18)', borderRadius: '12px', padding: '10px 14px' }}>
                   <span className="label-caps" style={{ color: '#16a34a', fontSize: '0.55rem' }}>New this period · </span>
-                  <span style={{ fontFamily: 'Raleway', fontSize: '0.80rem', color: 'var(--text-secondary)' }}>{data.period_comparison.new_products.join(', ')}</span>
+                  <span style={{ fontFamily: 'Raleway', fontSize: '0.80rem', color: 'var(--text-secondary)' }}>{data.period_comparison!.new_products.join(', ')}</span>
                 </div>
               )}
-              {data.period_comparison.dropped_products.length > 0 && (
+              {data.period_comparison!.dropped_products.length > 0 && (
                 <div style={{ backgroundColor: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.18)', borderRadius: '12px', padding: '10px 14px' }}>
                   <span className="label-caps" style={{ color: '#dc2626', fontSize: '0.55rem' }}>Not sold this period · </span>
-                  <span style={{ fontFamily: 'Raleway', fontSize: '0.80rem', color: 'var(--text-secondary)' }}>{data.period_comparison.dropped_products.join(', ')}</span>
+                  <span style={{ fontFamily: 'Raleway', fontSize: '0.80rem', color: 'var(--text-secondary)' }}>{data.period_comparison!.dropped_products.join(', ')}</span>
                 </div>
               )}
             </div>
