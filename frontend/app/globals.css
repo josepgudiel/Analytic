@@ -329,13 +329,35 @@ main {
   body {
     background-size: 24px 24px;
   }
-  /* Hide desktop sidebar */
+  /* Sidebar: slide off-screen by default on mobile */
   aside {
-    display: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    z-index: 45 !important;
+    width: 240px !important;
+    min-height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
   }
-  /* Reduce main content padding */
+  /* Slide in when open */
+  aside.sidebar--open {
+    transform: translateX(0) !important;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.4);
+  }
+  /* Show mobile top nav */
+  .mobile-top-nav {
+    display: flex !important;
+  }
+  /* Show overlay on mobile */
+  .sidebar-overlay {
+    display: block !important;
+  }
+  /* Reduce main content padding + add top offset for mobile nav */
   main {
-    padding: 24px 16px !important;
+    padding: 80px 16px 24px !important;
   }
 
   /* Responsive grids → stack on mobile */
@@ -490,9 +512,9 @@ main {
   .landing-upload-card [style*="grid-template-columns"] {
     grid-template-columns: 1fr !important;
   }
-  /* Dashboard: reduce main padding even more on phones */
+  /* Dashboard: reduce main padding even more on phones, keep top offset for nav */
   main {
-    padding: 20px 12px !important;
+    padding: 72px 12px 20px !important;
   }
   /* Anomaly rows stack on narrow screens */
   .anomaly-row {

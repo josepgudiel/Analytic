@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { useSession } from '@/context/SessionContext'
 import Sidebar from '@/components/Sidebar'
+import MobileNav from '@/components/MobileNav'
 
 const NAV_MAIN = [
   { href: '/dashboard/action-center', label: 'Actions' },
@@ -24,6 +25,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const pathname = usePathname()
   const [warningDismissed, setWarningDismissed] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   useEffect(() => {
     if (!sessionId) router.replace('/')
@@ -34,9 +36,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     setWarningDismissed(false)
   }, [uploadMeta?.session_id])
 
-  // Close drawer on route change
+  // Close drawer and sidebar on route change
   useEffect(() => {
     setDrawerOpen(false)
+    setSidebarOpen(false)
   }, [pathname])
 
   if (!sessionId) return null
@@ -48,7 +51,29 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'var(--bg-base)' }}>
-      <Sidebar />
+      {/* Mobile top nav with hamburger */}
+      <MobileNav
+        isSidebarOpen={sidebarOpen}
+        onToggleSidebar={() => setSidebarOpen(v => !v)}
+      />
+
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
+      {/* Overlay when sidebar is open on mobile */}
+      {sidebarOpen && (
+        <div
+          className="sidebar-overlay"
+          onClick={() => setSidebarOpen(false)}
+          style={{
+            display: 'none', // shown via CSS on mobile
+            position: 'fixed',
+            inset: 0,
+            zIndex: 44,
+            backgroundColor: 'rgba(0,0,0,0.55)',
+            transition: 'opacity 0.25s ease',
+          }}
+        />
+      )}
 
       {/* Mobile bottom nav — hidden on desktop via CSS */}
       <nav style={{

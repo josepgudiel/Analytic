@@ -14,21 +14,29 @@ const NAV = [
   { href: '/dashboard/ai-advisor',    label: 'Business Advisor', sub: 'Ask about your data' },
 ]
 
-export default function Sidebar() {
+interface SidebarProps {
+  isOpen?: boolean
+  onClose?: () => void
+}
+
+export default function Sidebar({ isOpen = false, onClose }: SidebarProps) {
   const pathname = usePathname()
   const router   = useRouter()
   const { uploadMeta, clearSession, daysStale } = useSession()
 
   return (
-    <aside style={{
-      width: 'var(--sidebar-width)',
-      minHeight: '100vh',
-      flexShrink: 0,
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: 'var(--bg-surface)',
-      borderRight: '1px solid var(--border)',
-    }}>
+    <aside
+      className={`sidebar ${isOpen ? 'sidebar--open' : ''}`}
+      style={{
+        width: 'var(--sidebar-width)',
+        minHeight: '100vh',
+        flexShrink: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: 'var(--bg-surface)',
+        borderRight: '1px solid var(--border)',
+      }}
+    >
 
       {/* Brand */}
       <div style={{
@@ -152,6 +160,7 @@ export default function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onClose}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -200,7 +209,7 @@ export default function Sidebar() {
         borderTop: '1px solid var(--border)',
       }}>
         <button
-          onClick={() => { clearSession(); router.push('/') }}
+          onClick={() => { onClose?.(); clearSession(); router.push('/') }}
           style={{
             width: '100%',
             padding: '9px 14px',
