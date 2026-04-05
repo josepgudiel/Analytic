@@ -407,6 +407,7 @@ export default function LandingPage() {
 
           {/* Peek cards below */}
           <div
+            className="grid-keep-2"
             style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
@@ -782,7 +783,7 @@ export default function LandingPage() {
           </div>
 
           {/* Demo buttons */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+          <div className="grid-keep-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
             {[
               { id: 'coffee_shop' as const, label: 'Coffee Shop' },
               { id: 'retail' as const, label: 'Retail Store' },

@@ -111,7 +111,7 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
               borderRadius: "20px",
               borderTopLeftRadius: "4px",
               padding: "16px 18px",
-              maxWidth: "85%",
+              maxWidth: "min(85%, 600px)",
             }}>
               <p style={{
                 fontFamily: "Raleway",
@@ -133,13 +133,15 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
                     backgroundColor: "var(--bg-alt)",
                     border: "1px solid var(--border-warm)",
                     borderRadius: "999px",
-                    padding: "8px 18px",
+                    padding: "12px 18px",
                     fontFamily: "Raleway",
                     fontWeight: 600,
                     fontSize: "0.82rem",
                     color: "var(--accent)",
                     cursor: "pointer",
                     transition: "all 0.15s ease",
+                    minHeight: "44px",
+                    whiteSpace: "nowrap",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = "var(--surface)"
@@ -165,7 +167,7 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
             justifyContent: msg.role === "user" ? "flex-end" : "flex-start",
           }}>
             <div style={{
-              maxWidth: "85%",
+              maxWidth: "min(85%, 600px)",
               padding: "16px 18px",
               borderRadius: "20px",
               ...(msg.role === "user"
@@ -241,13 +243,14 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
             backgroundColor: "var(--surface-warm)",
             border: "1px solid var(--border-warm)",
             borderRadius: "14px",
-            padding: "12px 16px",
+            padding: "14px 16px",
             fontFamily: "Raleway",
             color: "var(--text-primary)",
-            fontSize: "0.88rem",
+            fontSize: "16px",
             resize: "none",
             outline: "none",
             transition: "border-color 0.15s ease",
+            minHeight: "48px",
           }}
           onFocus={(e) => { e.currentTarget.style.borderColor = "var(--border-accent)" }}
           onBlur={(e) => { e.currentTarget.style.borderColor = "var(--border-warm)" }}
@@ -259,11 +262,16 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
             backgroundColor: "var(--navy)",
             color: "#ffffff",
             borderRadius: "14px",
-            padding: "12px 16px",
+            padding: "14px 16px",
             border: "none",
             cursor: !input.trim() || typing ? "not-allowed" : "pointer",
             opacity: !input.trim() || typing ? 0.5 : 1,
             transition: "all 0.15s ease",
+            minHeight: "48px",
+            minWidth: "48px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
           onMouseEnter={(e) => {
             if (input.trim() && !typing) {

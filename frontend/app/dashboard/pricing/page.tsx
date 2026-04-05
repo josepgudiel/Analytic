@@ -33,7 +33,7 @@ export default function PricingPage() {
   return (
     <div>
       {/* Page header */}
-      <div style={{ marginBottom: '48px' }}>
+      <div style={{ marginBottom: 'clamp(28px, 5vw, 48px)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
           <div style={{ width: '28px', height: '1px', backgroundColor: 'var(--accent)' }} />
           <span className="label-caps" style={{ color: 'var(--accent)' }}>Intelligence</span>
@@ -88,7 +88,7 @@ export default function PricingPage() {
                   animationDelay: `${i * 60}ms`, opacity: 0,
                   backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
                   borderLeft: `4px solid ${acColor}`, borderRadius: '20px',
-                  padding: '22px 26px', boxShadow: 'var(--shadow-sm)',
+                  padding: 'clamp(16px, 3vw, 22px) clamp(16px, 3vw, 26px)', boxShadow: 'var(--shadow-sm)',
                   transition: 'box-shadow 0.25s ease, transform 0.25s ease',
                 }}
                 onMouseEnter={(e) => { e.currentTarget.style.boxShadow = 'var(--shadow-md)'; e.currentTarget.style.transform = 'translateY(-2px)' }}

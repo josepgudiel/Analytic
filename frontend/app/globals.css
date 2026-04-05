@@ -53,10 +53,12 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
+  font-size: 16px; /* Prevents iOS auto-zoom on input focus */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -349,8 +351,10 @@ main {
   }
   table { font-size: 0.75rem; }
 
-  /* Inline grid overrides for any remaining inline styles */
-  [style*="grid-template-columns"] {
+  /* Inline grid overrides for any remaining inline styles —
+     force most grids to stack, but keep simple 2-col grids
+     (e.g. Peak/Slowest day cards, demo buttons) via .grid-keep-2 */
+  [style*="grid-template-columns"]:not(.grid-keep-2) {
     grid-template-columns: 1fr !important;
   }
 
@@ -358,9 +362,12 @@ main {
   .advisor-layout {
     flex-direction: column !important;
     height: auto !important;
+    min-height: 60vh;
   }
   .advisor-profile-panel {
     width: 100% !important;
+    max-height: 220px;
+    overflow-y: auto;
   }
   /* Chips scroll horizontally on mobile */
   .chip-container {
@@ -377,13 +384,35 @@ main {
   main {
     padding-bottom: 72px !important;
   }
-  /* Ensure minimum tap target for all buttons */
+  /* Ensure minimum tap target for all buttons and inputs */
   button, a.btn-primary, a.btn-ghost {
-    min-height: 44px;
+    min-height: 48px;
+  }
+  input, select, textarea {
+    min-height: 48px;
+    font-size: 16px !important; /* Prevents iOS zoom */
   }
   /* Reduce chart min-height on mobile */
   .chart-wrapper { min-height: 150px; }
   .chart-wrapper > * { min-height: 150px; }
+
+  /* Card padding reductions on mobile */
+  .card, .card-navy, .card-elevated, .card-warm {
+    border-radius: 12px;
+  }
+
+  /* Report body mobile padding */
+  .report-body {
+    padding: 24px 18px !important;
+  }
+
+  /* Recommendation card footer: allow wrapping */
+  .rec-footer {
+    flex-wrap: wrap;
+  }
+
+  /* Page headers: reduce bottom margin */
+  h1 { font-size: clamp(1.4rem, 5vw, 2.2rem); }
 }
 
 /* ── Landing page: responsive for tablets and phones ── */
@@ -470,6 +499,26 @@ main {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 8px !important;
+  }
+  /* Advisor chat: expand bubble width on narrow screens */
+  .advisor-profile-panel {
+    max-height: 180px;
+  }
+  /* Metric card value: reduce on very small screens */
+  .number-display {
+    font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
+  }
+  /* Cluster card heading */
+  .cluster-heading {
+    font-size: 1.1rem !important;
+  }
+  /* Report action buttons: stack vertically */
+  .report-actions {
+    flex-direction: column !important;
+  }
+  .report-actions button {
+    width: 100%;
+    justify-content: center;
   }
 }
 

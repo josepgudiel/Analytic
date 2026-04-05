@@ -117,7 +117,7 @@ export default function UploadZone({ onSuccess }: UploadZoneProps) {
           border: '2px dashed',
           borderColor: dragging ? 'var(--accent)' : 'var(--border-warm)',
           borderRadius: '20px',
-          padding: '40px 24px',
+          padding: 'clamp(24px, 5vw, 40px) clamp(16px, 3vw, 24px)',
           textAlign: 'center',
           transition: 'all 0.2s ease',
           cursor: loading ? 'default' : 'pointer',
@@ -206,6 +206,7 @@ export default function UploadZone({ onSuccess }: UploadZoneProps) {
             width: '100%',
             justifyContent: 'center',
             padding: '14px 24px',
+            minHeight: '48px',
             opacity: loading ? 0.6 : 1,
           }}
         >

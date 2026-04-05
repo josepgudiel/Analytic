@@ -27,7 +27,7 @@ export default function WhatsSellingPage() {
   return (
     <div>
       {/* Page header */}
-      <div style={{ marginBottom: '48px' }}>
+      <div style={{ marginBottom: 'clamp(28px, 5vw, 48px)' }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -105,7 +105,7 @@ export default function WhatsSellingPage() {
               gridTemplateColumns: 'repeat(2, 1fr)',
               gap: '16px',
               marginBottom: '40px',
-            }} className="lg:!grid-cols-4">
+            }} className="grid-keep-2 lg:!grid-cols-4">
               {data.clusters.map((c, i) => (
                 <div key={c.label} className={`fade-up fade-up-delay-${Math.min(i + 1, 4)}`}>
                   <ClusterCard cluster={c} currency={currency} />
@@ -130,8 +130,8 @@ export default function WhatsSellingPage() {
                     key={p.product}
                     className={`card-navy fade-up fade-up-delay-${Math.min(i + 1, 4)}`}
                     style={{
-                      minWidth: '210px',
-                      padding: '20px',
+                      minWidth: 'min(210px, 70vw)',
+                      padding: 'clamp(14px, 3vw, 20px)',
                       flexShrink: 0,
                     }}
                   >
@@ -174,8 +174,8 @@ export default function WhatsSellingPage() {
                     key={p.product}
                     className={`card-navy fade-up fade-up-delay-${Math.min(i + 1, 4)}`}
                     style={{
-                      minWidth: '210px',
-                      padding: '20px',
+                      minWidth: 'min(210px, 70vw)',
+                      padding: 'clamp(14px, 3vw, 20px)',
                       flexShrink: 0,
                     }}
                   >

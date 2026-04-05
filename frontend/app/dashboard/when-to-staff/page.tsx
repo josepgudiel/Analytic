@@ -35,7 +35,7 @@ export default function WhenToStaffPage() {
   return (
     <div>
       {/* Page header */}
-      <div style={{ marginBottom: '48px' }}>
+      <div style={{ marginBottom: 'clamp(28px, 5vw, 48px)' }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -139,7 +139,7 @@ export default function WhenToStaffPage() {
           )}
 
           {/* Peak / Slowest */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '32px' }}>
+          <div className="grid-keep-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '32px' }}>
             <div className="card-navy fade-up fade-up-delay-1" style={{ padding: '22px 24px' }}>
               <span className="label-caps" style={{ color: '#16a34a' }}>Peak Day</span>
               <p className="number-display" style={{ color: '#ffffff', fontSize: '2rem', marginTop: '6px' }}>{data.peak_day ?? "No data"}</p>
@@ -154,7 +154,7 @@ export default function WhenToStaffPage() {
           {data.has_dates && data.day_of_week.length > 0 && (
             <div className="fade-up fade-up-delay-3">
               <ChartCard title="Revenue by Day of Week" caption="Average revenue per day across your dataset">
-                <ResponsiveContainer width="100%" height={320}>
+                <ResponsiveContainer width="100%" height={280}>
                   <BarChart data={data.day_of_week}>
                     <CartesianGrid strokeDasharray="3 3" stroke={CHART_COLORS.grid} vertical={false} />
                     <XAxis dataKey="day" tick={axisStyle.tick} axisLine={axisStyle.axisLine} tickLine={axisStyle.tickLine} />

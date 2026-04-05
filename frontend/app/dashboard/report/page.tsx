@@ -58,7 +58,7 @@ export default function ReportPage() {
   return (
     <div>
       {/* Page header */}
-      <div style={{ marginBottom: '48px' }}>
+      <div style={{ marginBottom: 'clamp(28px, 5vw, 48px)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
           <div style={{ width: '28px', height: '1px', backgroundColor: 'var(--accent)' }} />
           <span className="label-caps" style={{ color: 'var(--accent)' }}>Summary</span>
@@ -117,7 +117,7 @@ export default function ReportPage() {
                 {data.period_label}
               </div>
             </div>
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            <div className="report-actions" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               <button onClick={copyReport} className="btn-ghost no-print" style={{ fontSize: '0.68rem' }}>
                 {copied ? '✓ Copied' : 'Copy'}
               </button>
@@ -134,7 +134,7 @@ export default function ReportPage() {
           </div>
 
           {/* Report body */}
-          <div style={{
+          <div className="report-body" style={{
             backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
             borderRadius: '20px', padding: '36px 40px', boxShadow: 'var(--shadow-md)',
           }}>

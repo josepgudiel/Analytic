@@ -29,7 +29,7 @@ export default function MetricCard({
         border: '1px solid var(--border)',
         borderLeft: accent ? '3px solid var(--accent)' : '1px solid var(--border)',
         borderRadius: 'var(--radius-card)',
-        padding: '20px 22px',
+        padding: 'clamp(14px, 3vw, 20px) clamp(14px, 3vw, 22px)',
         transition: 'border-color 0.2s ease',
       }}
       onMouseEnter={(e) => {

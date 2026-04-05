@@ -25,7 +25,7 @@ export default function AIAdvisorPage() {
   return (
     <div>
       {/* Page header */}
-      <div style={{ marginBottom: '48px' }}>
+      <div style={{ marginBottom: 'clamp(28px, 5vw, 48px)' }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -52,7 +52,7 @@ export default function AIAdvisorPage() {
         <div className="divider" style={{ marginTop: '24px' }} />
       </div>
 
-      <div className="fade-up advisor-layout" style={{ display: 'flex', gap: '24px', height: 'calc(100vh - 300px)' }}>
+      <div className="fade-up advisor-layout" style={{ display: 'flex', gap: '24px', height: 'calc(100vh - 300px)', minHeight: '400px' }}>
         {/* Left: Your data panel */}
         <div className="advisor-profile-panel" style={{ width: '35%', flexShrink: 0 }}>
           <div style={{

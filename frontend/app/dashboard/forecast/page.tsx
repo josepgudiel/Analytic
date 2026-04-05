@@ -56,7 +56,7 @@ export default function ForecastPage() {
   return (
     <div>
       {/* Page header */}
-      <div style={{ marginBottom: '48px' }}>
+      <div style={{ marginBottom: 'clamp(28px, 5vw, 48px)' }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -142,7 +142,7 @@ export default function ForecastPage() {
           {/* Chart */}
           <div className="fade-up fade-up-delay-1">
             <ChartCard title="Revenue Forecast" caption="Predicted weekly revenue with estimated range">
-              <ResponsiveContainer width="100%" height={320}>
+              <ResponsiveContainer width="100%" height={280}>
                 <AreaChart data={chartData}>
                   <defs>
                     <linearGradient id="confidenceGrad" x1="0" y1="0" x2="0" y2="1">

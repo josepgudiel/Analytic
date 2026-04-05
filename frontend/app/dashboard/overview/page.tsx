@@ -52,7 +52,7 @@ export default function OverviewPage() {
   return (
     <div>
       {/* Page header */}
-      <div style={{ marginBottom: '48px' }}>
+      <div style={{ marginBottom: 'clamp(28px, 5vw, 48px)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
           <div style={{ width: '28px', height: '1px', backgroundColor: 'var(--accent)' }} />
           <span className="label-caps" style={{ color: 'var(--accent)' }}>Performance</span>
@@ -204,7 +204,7 @@ export default function OverviewPage() {
                 return (
                   <div
                     key={i}
-                    className="fade-up"
+                    className="fade-up anomaly-row"
                     style={{
                       animationDelay: `${i * 40}ms`, opacity: 0,
                       display: 'flex', alignItems: 'center', gap: '16px',

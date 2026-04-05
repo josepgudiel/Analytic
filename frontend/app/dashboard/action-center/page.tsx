@@ -53,7 +53,7 @@ export default function ActionCenterPage() {
   return (
     <div>
       {/* Page header */}
-      <div style={{ marginBottom: '44px' }}>
+      <div style={{ marginBottom: 'clamp(24px, 5vw, 44px)' }}>
         <div style={{
           fontFamily: 'var(--font-mono)',
           fontSize: '0.60rem',
@@ -127,7 +127,7 @@ export default function ActionCenterPage() {
         gap: '12px',
         marginBottom: '28px',
       }}
-        className="lg:!grid-cols-4"
+        className="grid-keep-2 lg:!grid-cols-4"
       >
         {data ? (
           <>

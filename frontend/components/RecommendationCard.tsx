@@ -143,6 +143,7 @@ export default function RecommendationCard({
 
         {/* Footer: confidence + transactions + done button */}
         <div
+          className="rec-footer"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -191,12 +192,13 @@ export default function RecommendationCard({
             onClick={() => onDismiss?.(rec.id)}
             style={{
               flexShrink: 0,
-              padding: '5px 12px',
+              padding: '8px 16px',
+              minHeight: '40px',
               backgroundColor: 'transparent',
               border: '1px solid var(--border)',
               borderRadius: 'var(--radius, 6px)',
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.54rem',
+              fontSize: '0.58rem',
               fontWeight: 700,
               letterSpacing: '0.10em',
               textTransform: 'uppercase',

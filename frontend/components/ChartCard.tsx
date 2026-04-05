@@ -12,7 +12,7 @@ export default function ChartCard({
       backgroundColor: 'var(--bg-surface)',
       border: '1px solid var(--border)',
       borderRadius: 'var(--radius-card)',
-      padding: '24px 24px 20px',
+      padding: 'clamp(16px, 3vw, 24px) clamp(14px, 3vw, 24px) clamp(14px, 2vw, 20px)',
     }}>
       <div style={{ marginBottom: caption ? '4px' : '18px' }}>
         <h3>{title}</h3>

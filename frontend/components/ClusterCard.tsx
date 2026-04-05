@@ -33,7 +33,7 @@ export default function ClusterCard({ cluster, currency = '$' }: ClusterCardProp
         borderRadius: '20px',
         border: '1px solid rgba(147,197,253,0.10)',
         boxShadow: 'var(--shadow-md)',
-        padding: '22px 20px',
+        padding: 'clamp(16px, 3vw, 22px) clamp(14px, 3vw, 20px)',
         transition: 'box-shadow 0.3s ease, transform 0.3s ease',
       }}
       onMouseEnter={(e) => {
@@ -45,8 +45,8 @@ export default function ClusterCard({ cluster, currency = '$' }: ClusterCardProp
         e.currentTarget.style.transform = 'translateY(0)'
       }}
     >
-      <h2 className="font-display" style={{
-        fontSize: '1.4rem',
+      <h2 className="font-display cluster-heading" style={{
+        fontSize: 'clamp(1.1rem, 3vw, 1.4rem)',
         fontWeight: 500,
         color: '#ffffff',
         marginBottom: '10px',
