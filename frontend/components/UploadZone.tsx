@@ -120,7 +120,7 @@ export default function UploadZone({ onSuccess }: UploadZoneProps) {
         style={{
           border: '2px dashed',
           borderColor: dragging ? 'var(--accent)' : 'var(--border-warm)',
-          borderRadius: '20px',
+          borderRadius: 'var(--radius-card)',
           padding: 'clamp(24px, 5vw, 40px) clamp(16px, 3vw, 24px)',
           textAlign: 'center',
           transition: 'all 0.2s ease',
@@ -147,25 +147,25 @@ export default function UploadZone({ onSuccess }: UploadZoneProps) {
         {success ? (
           <>
             <CheckCircle style={{ margin: '0 auto 12px', color: '#16a34a' }} size={40} strokeWidth={1.5} />
-            <p style={{ fontFamily: 'Raleway', fontWeight: 700, color: '#16a34a', fontSize: '1.05rem', marginBottom: '4px' }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontWeight: 700, color: '#16a34a', fontSize: '1.05rem', marginBottom: '4px' }}>
               Analysis complete &mdash; loading your dashboard
             </p>
           </>
         ) : !file ? (
           <>
             <Upload style={{ margin: '0 auto 12px', color: 'var(--accent)' }} size={40} strokeWidth={1.5} />
-            <p style={{ fontFamily: 'Raleway', fontWeight: 700, color: 'var(--navy)', fontSize: '1.05rem', marginBottom: '4px' }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontWeight: 700, color: 'var(--t1)', fontSize: '1.05rem', marginBottom: '4px' }}>
               Drag &amp; drop your file here
             </p>
-            <p style={{ fontFamily: 'Raleway', color: 'var(--text-muted)', fontSize: '0.82rem' }}>
+            <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-muted)', fontSize: '0.82rem' }}>
               or click to browse &mdash; CSV, XLSX, XLS
             </p>
           </>
         ) : (
           <>
             <FileSpreadsheet style={{ margin: '0 auto 12px', color: 'var(--accent)' }} size={40} strokeWidth={1.5} />
-            <p style={{ fontFamily: 'Raleway', fontWeight: 700, color: 'var(--navy)', fontSize: '1.05rem', marginBottom: '4px' }}>{file.name}</p>
-            <p style={{ fontFamily: 'Raleway', color: 'var(--text-muted)', fontSize: '0.82rem' }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontWeight: 700, color: 'var(--t1)', fontSize: '1.05rem', marginBottom: '4px' }}>{file.name}</p>
+            <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-muted)', fontSize: '0.82rem' }}>
               {(file.size / 1024).toFixed(1)} KB
             </p>
           </>
@@ -181,7 +181,7 @@ export default function UploadZone({ onSuccess }: UploadZoneProps) {
           padding: '14px 16px',
           boxShadow: 'var(--shadow-xs)',
         }}>
-          <p style={{ fontFamily: 'Raleway', color: '#dc2626', fontSize: '0.82rem', marginBottom: '8px' }}>{error}</p>
+          <p style={{ fontFamily: 'var(--font-body)', color: '#dc2626', fontSize: '0.82rem', marginBottom: '8px' }}>{error}</p>
           <button
             onClick={resetZone}
             className="label-caps"
@@ -210,10 +210,10 @@ export default function UploadZone({ onSuccess }: UploadZoneProps) {
         }}>
           <label style={{
             display: 'block',
-            fontFamily: 'Raleway',
+            fontFamily: 'var(--font-body)',
             fontWeight: 600,
             fontSize: '0.82rem',
-            color: 'var(--navy)',
+            color: 'var(--t1)',
             marginBottom: '6px',
           }}>
             Your gross margin % <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}>(optional)</span>
@@ -234,15 +234,15 @@ export default function UploadZone({ onSuccess }: UploadZoneProps) {
                 borderRadius: '8px',
                 border: '1px solid var(--border-warm)',
                 backgroundColor: 'var(--bg)',
-                fontFamily: 'Raleway',
+                fontFamily: 'var(--font-body)',
                 fontSize: '0.88rem',
-                color: 'var(--navy)',
+                color: 'var(--t1)',
                 outline: 'none',
               }}
             />
-            <span style={{ fontFamily: 'Raleway', fontSize: '0.82rem', color: 'var(--text-muted)' }}>%</span>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>%</span>
           </div>
-          <p style={{ fontFamily: 'Raleway', fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '6px' }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '6px' }}>
             Leave blank to use the 65% default — enter your actual margin for accurate dollar impacts.
           </p>
         </div>
@@ -276,7 +276,7 @@ export default function UploadZone({ onSuccess }: UploadZoneProps) {
       {loading && (
         <p className="animate-pulse" style={{
           textAlign: 'center',
-          fontFamily: 'Raleway',
+          fontFamily: 'var(--font-body)',
           color: 'var(--text-muted)',
           fontSize: '0.82rem',
           marginTop: '12px',
@@ -293,7 +293,7 @@ export default function UploadZone({ onSuccess }: UploadZoneProps) {
           backgroundColor: 'rgba(217,119,6,0.06)',
           border: '1px solid rgba(217,119,6,0.20)',
         }}>
-          <p style={{ fontFamily: 'Raleway', color: '#92400e', fontSize: '0.78rem' }}>
+          <p style={{ fontFamily: 'var(--font-body)', color: '#92400e', fontSize: '0.78rem' }}>
             {'\u26A0\uFE0F'} {warningMessage}
           </p>
         </div>

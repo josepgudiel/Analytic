@@ -4,13 +4,13 @@ export default function ErrorCard({ message, onRetry }: { message: string; onRet
       backgroundColor: 'var(--surface)',
       border: '1px solid var(--border)',
       borderLeft: '4px solid #dc2626',
-      borderRadius: '20px',
+      borderRadius: 'var(--radius-card)',
       padding: '24px 26px',
       boxShadow: 'var(--shadow-sm)',
     }}>
       <div className="label-caps" style={{ color: '#dc2626', marginBottom: '10px' }}>Something went wrong</div>
       <p style={{
-        fontFamily: 'Raleway',
+        fontFamily: 'var(--font-body)',
         fontSize: '0.85rem',
         color: 'var(--text-secondary)',
         marginBottom: onRetry ? '16px' : '0',
@@ -29,7 +29,7 @@ export default function ErrorCard({ message, onRetry }: { message: string; onRet
             cursor: 'pointer',
             transition: 'color 0.15s ease',
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--navy)' }}
+          onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--t1)' }}
           onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--accent)' }}
         >
           Try again &rarr;

@@ -63,8 +63,8 @@ export default function ReportPage() {
           <div style={{ width: '28px', height: '1px', backgroundColor: 'var(--accent)' }} />
           <span className="label-caps" style={{ color: 'var(--accent)' }}>Summary</span>
         </div>
-        <h1 style={{ color: 'var(--navy)', marginBottom: '14px' }}>Report</h1>
-        <p style={{ fontFamily: 'Raleway', fontSize: '0.92rem', color: 'var(--text-muted)', maxWidth: '500px', lineHeight: 1.75 }}>
+        <h1 style={{ color: 'var(--t1)', marginBottom: '14px' }}>Report</h1>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.92rem', color: 'var(--t2)', maxWidth: '500px', lineHeight: 1.75 }}>
           A plain-English business performance summary you can share with your accountant, partner, or investor.
         </p>
         <div className="divider" style={{ marginTop: '24px' }} />
@@ -78,7 +78,7 @@ export default function ReportPage() {
           <button onClick={generate} className="btn-primary">
             Generate Report
           </button>
-          <p style={{ fontFamily: 'Raleway', fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '420px' }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '420px' }}>
             Takes about 5–10 seconds. The report is generated fresh each time from your current data.
           </p>
         </div>
@@ -88,7 +88,7 @@ export default function ReportPage() {
       {loading && (
         <div style={{
           backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
-          borderLeft: '4px solid var(--accent)', borderRadius: '20px',
+          borderLeft: '4px solid var(--accent)', borderRadius: 'var(--radius-card)',
           padding: '28px 32px', boxShadow: 'var(--shadow-sm)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -98,7 +98,7 @@ export default function ReportPage() {
               animation: 'spin 0.8s linear infinite',
               flexShrink: 0,
             }} />
-            <p style={{ fontFamily: 'Raleway', color: 'var(--text-secondary)', fontSize: '0.88rem' }}>
+            <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.88rem' }}>
               Writing your report — this takes about 10 seconds…
             </p>
           </div>
@@ -113,7 +113,7 @@ export default function ReportPage() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '24px' }}>
             <div>
               <div className="label-caps" style={{ color: 'var(--accent)', marginBottom: '4px' }}>Period</div>
-              <div style={{ fontFamily: 'Raleway', fontWeight: 600, fontSize: '0.92rem', color: 'var(--t2)' }}>
+              <div style={{ fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: '0.92rem', color: 'var(--t2)' }}>
                 {data.period_label}
               </div>
             </div>
@@ -136,11 +136,11 @@ export default function ReportPage() {
           {/* Report body */}
           <div className="report-body" style={{
             backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
-            borderRadius: '20px', padding: '36px 40px', boxShadow: 'var(--shadow-md)',
+            borderRadius: 'var(--radius-card)', padding: '36px 40px', boxShadow: 'var(--shadow-md)',
           }}>
             {data.report.split('\n\n').filter(Boolean).map((para, i) => (
               <p key={i} style={{
-                fontFamily: 'Raleway', fontSize: '0.95rem',
+                fontFamily: 'var(--font-body)', fontSize: '0.95rem',
                 color: 'var(--text-primary)', lineHeight: 1.85,
                 marginBottom: i < data.report.split('\n\n').length - 1 ? '1.4em' : 0,
               }}>
@@ -150,7 +150,7 @@ export default function ReportPage() {
           </div>
 
           <p style={{
-            fontFamily: 'Raleway', fontSize: '0.68rem', color: 'var(--text-muted)',
+            fontFamily: 'var(--font-body)', fontSize: '0.68rem', color: 'var(--text-muted)',
             textAlign: 'center', marginTop: '16px',
           }}>
             AI-generated from your sales data · Always verify numbers before sharing externally

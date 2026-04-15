@@ -30,7 +30,7 @@ export default function ClusterCard({ cluster, currency = '$' }: ClusterCardProp
       style={{
         background: bg,
         color: '#ffffff',
-        borderRadius: '20px',
+        borderRadius: 'var(--radius-card)',
         border: '1px solid rgba(147,197,253,0.10)',
         boxShadow: 'var(--shadow-md)',
         padding: 'clamp(16px, 3vw, 22px) clamp(14px, 3vw, 20px)',
@@ -71,7 +71,7 @@ export default function ClusterCard({ cluster, currency = '$' }: ClusterCardProp
         </div>
       </div>
       <ul style={{
-        fontFamily: 'Raleway',
+        fontFamily: 'var(--font-body)',
         fontSize: '0.78rem',
         color: '#93c5fd',
         marginBottom: '12px',
@@ -89,7 +89,7 @@ export default function ClusterCard({ cluster, currency = '$' }: ClusterCardProp
         )}
       </ul>
       <p style={{
-        fontFamily: 'Raleway',
+        fontFamily: 'var(--font-body)',
         fontStyle: 'italic',
         fontSize: '0.75rem',
         color: 'rgba(255,255,255,0.7)',

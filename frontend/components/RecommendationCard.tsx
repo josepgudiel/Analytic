@@ -7,8 +7,8 @@ import { Recommendation } from '@/types'
 
 const URGENCY_STYLES: Record<string, { bg: string; color: string }> = {
   'Act this week': {
-    bg: 'rgba(248,113,113,0.15)',
-    color: 'var(--red)',
+    bg: 'rgba(179,229,254,0.15)',
+    color: '#b3e5fe',
   },
   'Worth doing soon': {
     bg: 'rgba(251,191,36,0.15)',
@@ -46,6 +46,7 @@ export default function RecommendationCard({
         opacity: 0,
         backgroundColor: 'var(--bg-card)',
         border: '1px solid var(--border)',
+        borderLeft: rec.confidence === 'high' ? '3px solid var(--sky)' : '3px solid #394f9a',
         borderRadius: 'var(--radius-card)',
         overflow: 'hidden',
         transition: 'border-color 0.2s ease',

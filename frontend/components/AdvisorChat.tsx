@@ -78,7 +78,7 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
           <button
             onClick={clearChat}
             style={{
-              fontFamily: "Raleway",
+              fontFamily: "var(--font-body)",
               fontSize: "0.72rem",
               color: "var(--text-muted)",
               background: "none",
@@ -86,7 +86,7 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
               cursor: "pointer",
               transition: "color 0.15s ease",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = "var(--navy)" }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = "var(--t1)" }}
             onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-muted)" }}
           >
             Clear chat
@@ -114,8 +114,8 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
               maxWidth: "min(85%, 600px)",
             }}>
               <p style={{
-                fontFamily: "Raleway",
-                color: "var(--navy)",
+                fontFamily: "var(--font-body)",
+                color: "var(--t2)",
                 fontSize: "0.88rem",
                 lineHeight: 1.65,
               }}>
@@ -134,7 +134,7 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
                     border: "1px solid var(--border-warm)",
                     borderRadius: "999px",
                     padding: "12px 18px",
-                    fontFamily: "Raleway",
+                    fontFamily: "var(--font-body)",
                     fontWeight: 600,
                     fontSize: "0.82rem",
                     color: "var(--accent)",
@@ -179,12 +179,12 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
                 : {
                     backgroundColor: "var(--surface-warm)",
                     border: "1px solid var(--border-warm)",
-                    color: "var(--navy)",
+                    color: "var(--t2)",
                     borderTopLeftRadius: "4px",
                   }),
             }}>
               <p style={{
-                fontFamily: "Raleway",
+                fontFamily: "var(--font-body)",
                 fontSize: "0.88rem",
                 whiteSpace: "pre-wrap",
                 lineHeight: 1.65,
@@ -193,7 +193,7 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
                 {msg.content}
               </p>
               <p style={{
-                fontFamily: "Raleway",
+                fontFamily: "var(--font-body)",
                 fontSize: "0.62rem",
                 marginTop: "6px",
                 opacity: 0.5,
@@ -216,9 +216,9 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
               display: "flex",
               gap: "6px",
             }}>
-              <span className="animate-bounce" style={{ width: "8px", height: "8px", backgroundColor: "var(--light-blue)", borderRadius: "50%", animationDelay: "0ms" }} />
-              <span className="animate-bounce" style={{ width: "8px", height: "8px", backgroundColor: "var(--light-blue)", borderRadius: "50%", animationDelay: "150ms" }} />
-              <span className="animate-bounce" style={{ width: "8px", height: "8px", backgroundColor: "var(--light-blue)", borderRadius: "50%", animationDelay: "300ms" }} />
+              <span className="animate-bounce" style={{ width: "8px", height: "8px", backgroundColor: "var(--sky)", borderRadius: "50%", animationDelay: "0ms" }} />
+              <span className="animate-bounce" style={{ width: "8px", height: "8px", backgroundColor: "var(--sky)", borderRadius: "50%", animationDelay: "150ms" }} />
+              <span className="animate-bounce" style={{ width: "8px", height: "8px", backgroundColor: "var(--sky)", borderRadius: "50%", animationDelay: "300ms" }} />
             </div>
           </div>
         )}
@@ -244,7 +244,7 @@ export default function AdvisorChat({ businessProfile }: AdvisorChatProps) {
             border: "1px solid var(--border-warm)",
             borderRadius: "14px",
             padding: "14px 16px",
-            fontFamily: "Raleway",
+            fontFamily: "var(--font-body)",
             color: "var(--text-primary)",
             fontSize: "16px",
             resize: "none",

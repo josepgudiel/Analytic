@@ -47,13 +47,13 @@ export default function WhenToStaffPage() {
             Operations
           </span>
         </div>
-        <h1 style={{ color: 'var(--navy)', marginBottom: '14px' }}>
+        <h1 style={{ color: 'var(--t1)', marginBottom: '14px' }}>
           When to Staff
         </h1>
         <p style={{
-          fontFamily: 'Raleway',
+          fontFamily: 'var(--font-body)',
           fontSize: '0.92rem',
-          color: 'var(--text-muted)',
+          color: 'var(--t2)',
           maxWidth: '500px',
           lineHeight: 1.75,
         }}>
@@ -69,12 +69,12 @@ export default function WhenToStaffPage() {
           backgroundColor: 'var(--surface)',
           border: '1px solid var(--border)',
           borderLeft: '4px solid #d97706',
-          borderRadius: '20px',
+          borderRadius: 'var(--radius-card)',
           padding: '18px 22px',
           marginBottom: '24px',
           boxShadow: 'var(--shadow-xs)',
         }}>
-          <p style={{ fontFamily: 'Raleway', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
+          <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
             This is taking longer than usual. The server may be starting up &mdash; try refreshing in a moment.
           </p>
         </div>
@@ -89,13 +89,13 @@ export default function WhenToStaffPage() {
                 backgroundColor: 'var(--surface)',
                 border: '1px solid var(--border)',
                 borderLeft: '4px solid var(--accent)',
-                borderRadius: '20px',
+                borderRadius: 'var(--radius-card)',
                 padding: '24px 26px',
                 marginBottom: '24px',
                 boxShadow: 'var(--shadow-sm)',
               }}>
                 <h3 style={{ color: 'var(--accent)', marginBottom: '12px' }}>Staffing Recommendation</h3>
-                <p style={{ fontFamily: 'Raleway', color: 'var(--text-primary)', fontSize: '0.88rem', lineHeight: 1.75 }}>
+                <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)', fontSize: '0.88rem', lineHeight: 1.75 }}>
                   {data.staffing_recommendation}
                 </p>
               </div>
@@ -103,12 +103,12 @@ export default function WhenToStaffPage() {
               <div className="fade-up" style={{
                 backgroundColor: 'var(--surface)',
                 border: '1px solid var(--border)',
-                borderRadius: '20px',
+                borderRadius: 'var(--radius-card)',
                 padding: '24px 26px',
                 marginBottom: '24px',
                 boxShadow: 'var(--shadow-sm)',
               }}>
-                <p style={{ fontFamily: 'Raleway', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
                   Not enough variation in your data to make a staffing recommendation yet.
                 </p>
               </div>
@@ -117,7 +117,7 @@ export default function WhenToStaffPage() {
             <div className="fade-up" style={{
               backgroundColor: 'var(--surface)',
               border: '1px solid var(--border)',
-              borderRadius: '20px',
+              borderRadius: 'var(--radius-card)',
               padding: '40px 28px',
               textAlign: 'center',
               marginBottom: '24px',
@@ -126,7 +126,7 @@ export default function WhenToStaffPage() {
               <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{'\uD83D\uDD50'}</div>
               <div className="label-caps" style={{ color: 'var(--accent)', marginBottom: '10px' }}>Date Column Required</div>
               <p style={{
-                fontFamily: 'Raleway',
+                fontFamily: 'var(--font-body)',
                 color: 'var(--text-muted)',
                 fontSize: '0.85rem',
                 maxWidth: '360px',
@@ -177,14 +177,14 @@ export default function WhenToStaffPage() {
         <div style={{
           backgroundColor: 'var(--surface)',
           border: '1px solid var(--border)',
-          borderRadius: '20px',
+          borderRadius: 'var(--radius-card)',
           padding: '48px 28px',
           textAlign: 'center',
           boxShadow: 'var(--shadow-sm)',
         }}>
           <div style={{ fontSize: '2rem', marginBottom: '12px' }}>🕐</div>
           <div className="label-caps" style={{ color: 'var(--accent)', marginBottom: '10px' }}>No staffing data yet</div>
-          <p style={{ fontFamily: 'Raleway', color: 'var(--text-muted)', fontSize: '0.85rem', maxWidth: '360px', margin: '0 auto', lineHeight: 1.65 }}>
+          <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-muted)', fontSize: '0.85rem', maxWidth: '360px', margin: '0 auto', lineHeight: 1.65 }}>
             Upload a file with a date column to see which days of the week drive the most revenue.
           </p>
         </div>

@@ -39,13 +39,13 @@ export default function WhatsSellingPage() {
             Products
           </span>
         </div>
-        <h1 style={{ color: 'var(--navy)', marginBottom: '14px' }}>
+        <h1 style={{ color: 'var(--t1)', marginBottom: '14px' }}>
           What&apos;s Selling
         </h1>
         <p style={{
-          fontFamily: 'Raleway',
+          fontFamily: 'var(--font-body)',
           fontSize: '0.92rem',
-          color: 'var(--text-muted)',
+          color: 'var(--t2)',
           maxWidth: '500px',
           lineHeight: 1.75,
         }}>
@@ -61,12 +61,12 @@ export default function WhatsSellingPage() {
           backgroundColor: 'var(--surface)',
           border: '1px solid var(--border)',
           borderLeft: '4px solid #d97706',
-          borderRadius: '20px',
+          borderRadius: 'var(--radius-card)',
           padding: '18px 22px',
           marginBottom: '24px',
           boxShadow: 'var(--shadow-xs)',
         }}>
-          <p style={{ fontFamily: 'Raleway', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
+          <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
             This is taking longer than usual. The server may be starting up &mdash; try refreshing in a moment.
           </p>
         </div>
@@ -79,7 +79,7 @@ export default function WhatsSellingPage() {
             <div style={{
               backgroundColor: 'var(--surface)',
               border: '1px solid var(--border)',
-              borderRadius: '20px',
+              borderRadius: 'var(--radius-card)',
               padding: '40px 28px',
               textAlign: 'center',
               marginBottom: '24px',
@@ -88,7 +88,7 @@ export default function WhatsSellingPage() {
               <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{'\uD83D\uDCE6'}</div>
               <div className="label-caps" style={{ color: 'var(--accent)', marginBottom: '10px' }}>Need More Products</div>
               <p style={{
-                fontFamily: 'Raleway',
+                fontFamily: 'var(--font-body)',
                 color: 'var(--text-muted)',
                 fontSize: '0.85rem',
                 maxWidth: '380px',
@@ -135,7 +135,7 @@ export default function WhatsSellingPage() {
                       flexShrink: 0,
                     }}
                   >
-                    <p style={{ fontFamily: 'Raleway', fontWeight: 600, fontSize: '0.88rem', color: '#ffffff', marginBottom: '6px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '100%' }}>
+                    <p style={{ fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: '0.88rem', color: '#ffffff', marginBottom: '6px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '100%' }}>
                       {p.product}
                     </p>
                     <div style={{
@@ -144,7 +144,7 @@ export default function WhatsSellingPage() {
                       gap: '4px',
                       color: '#16a34a',
                       fontSize: '0.82rem',
-                      fontFamily: 'Raleway',
+                      fontFamily: 'var(--font-body)',
                       marginBottom: '6px',
                     }}>
                       <TrendingUp size={14} /> +{p.growth_pct.toFixed(1)}%
@@ -179,7 +179,7 @@ export default function WhatsSellingPage() {
                       flexShrink: 0,
                     }}
                   >
-                    <p style={{ fontFamily: 'Raleway', fontWeight: 600, fontSize: '0.88rem', color: '#ffffff', marginBottom: '6px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '100%' }}>
+                    <p style={{ fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: '0.88rem', color: '#ffffff', marginBottom: '6px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '100%' }}>
                       {p.product}
                     </p>
                     <div style={{
@@ -188,7 +188,7 @@ export default function WhatsSellingPage() {
                       gap: '4px',
                       color: '#dc2626',
                       fontSize: '0.82rem',
-                      fontFamily: 'Raleway',
+                      fontFamily: 'var(--font-body)',
                       marginBottom: '6px',
                     }}>
                       <TrendingDown size={14} /> {p.decline_pct.toFixed(1)}%
@@ -207,13 +207,13 @@ export default function WhatsSellingPage() {
             <div style={{
               backgroundColor: 'var(--surface)',
               border: '1px solid var(--border)',
-              borderRadius: '20px',
+              borderRadius: 'var(--radius-card)',
               padding: '20px 24px',
               marginBottom: '40px',
               boxShadow: 'var(--shadow-sm)',
             }}>
               <div className="label-caps" style={{ color: 'var(--accent)', marginBottom: '8px' }}>Bundle Suggestions</div>
-              <p style={{ fontFamily: 'Raleway', color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.65, margin: 0 }}>
+              <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.65, margin: 0 }}>
                 {data.basket_info}
               </p>
             </div>
@@ -226,7 +226,7 @@ export default function WhatsSellingPage() {
               <div className="overflow-x-mobile" style={{
                 backgroundColor: 'var(--surface)',
                 border: '1px solid var(--border)',
-                borderRadius: '20px',
+                borderRadius: 'var(--radius-card)',
                 overflow: 'hidden',
                 boxShadow: 'var(--shadow-sm)',
               }}>
@@ -251,10 +251,10 @@ export default function WhatsSellingPage() {
                           onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--bg-alt)' }}
                           onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent' }}
                         >
-                          <td style={{ fontFamily: 'Raleway', color: 'var(--text-primary)', fontSize: '0.82rem', padding: '12px 18px' }}>{r.antecedent}</td>
-                          <td style={{ fontFamily: 'Raleway', color: 'var(--text-primary)', fontSize: '0.82rem', padding: '12px 18px' }}>{r.consequent}</td>
-                          <td style={{ fontFamily: 'Raleway', color: 'var(--text-primary)', fontSize: '0.82rem', padding: '12px 18px', textAlign: 'right' }}>{r.confidence_pct.toFixed(0)}% of the time</td>
-                          <td style={{ fontFamily: 'Raleway', fontSize: '0.82rem', padding: '12px 18px', textAlign: 'right', fontWeight: 600, color: signalColor }}>
+                          <td style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)', fontSize: '0.82rem', padding: '12px 18px' }}>{r.antecedent}</td>
+                          <td style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)', fontSize: '0.82rem', padding: '12px 18px' }}>{r.consequent}</td>
+                          <td style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)', fontSize: '0.82rem', padding: '12px 18px', textAlign: 'right' }}>{r.confidence_pct.toFixed(0)}% of the time</td>
+                          <td style={{ fontFamily: 'var(--font-body)', fontSize: '0.82rem', padding: '12px 18px', textAlign: 'right', fontWeight: 600, color: signalColor }}>
                             {signalLabel}
                           </td>
                         </tr>

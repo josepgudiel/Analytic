@@ -68,13 +68,13 @@ export default function ForecastPage() {
             Outlook
           </span>
         </div>
-        <h1 style={{ color: 'var(--navy)', marginBottom: '14px' }}>
+        <h1 style={{ color: 'var(--t1)', marginBottom: '14px' }}>
           What to Expect
         </h1>
         <p style={{
-          fontFamily: 'Raleway',
+          fontFamily: 'var(--font-body)',
           fontSize: '0.92rem',
-          color: 'var(--text-muted)',
+          color: 'var(--t2)',
           maxWidth: '500px',
           lineHeight: 1.75,
         }}>
@@ -90,12 +90,12 @@ export default function ForecastPage() {
           backgroundColor: 'var(--surface)',
           border: '1px solid var(--border)',
           borderLeft: '4px solid #d97706',
-          borderRadius: '20px',
+          borderRadius: 'var(--radius-card)',
           padding: '18px 22px',
           marginBottom: '24px',
           boxShadow: 'var(--shadow-xs)',
         }}>
-          <p style={{ fontFamily: 'Raleway', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
+          <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
             This is taking longer than usual. The server may be starting up &mdash; try refreshing in a moment.
           </p>
         </div>
@@ -109,7 +109,7 @@ export default function ForecastPage() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              fontFamily: 'Raleway',
+              fontFamily: 'var(--font-body)',
               fontWeight: 800,
               textTransform: 'uppercase',
               fontSize: '0.68rem',
@@ -129,11 +129,11 @@ export default function ForecastPage() {
               backgroundColor: 'var(--surface)',
               border: '1px solid var(--border)',
               borderLeft: '3px solid #d97706',
-              borderRadius: '20px',
+              borderRadius: 'var(--radius-card)',
               padding: '14px 20px',
               marginBottom: '24px',
             }}>
-              <p style={{ fontFamily: 'Raleway', color: 'var(--text-secondary)', fontSize: '0.82rem', margin: 0 }}>
+              <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.82rem', margin: 0 }}>
                 Based on limited history — accuracy improves with more data.
               </p>
             </div>
@@ -179,7 +179,7 @@ export default function ForecastPage() {
                       backgroundColor: 'var(--surface)',
                       border: '1px solid var(--border)',
                       borderLeft: '4px solid var(--accent)',
-                      borderRadius: '20px',
+                      borderRadius: 'var(--radius-card)',
                       padding: '18px 22px',
                       boxShadow: 'var(--shadow-sm)',
                       transition: 'box-shadow 0.25s ease, transform 0.25s ease',
@@ -193,7 +193,7 @@ export default function ForecastPage() {
                       e.currentTarget.style.transform = 'translateY(0)'
                     }}
                   >
-                    <p style={{ fontFamily: 'Raleway', color: 'var(--text-primary)', fontSize: '0.88rem', lineHeight: 1.65 }}>{action}</p>
+                    <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)', fontSize: '0.88rem', lineHeight: 1.65 }}>{action}</p>
                   </div>
                 ))}
               </div>
@@ -209,7 +209,7 @@ export default function ForecastPage() {
         <div style={{
           backgroundColor: 'var(--surface)',
           border: '1px solid var(--border)',
-          borderRadius: '20px',
+          borderRadius: 'var(--radius-card)',
           padding: '48px 28px',
           textAlign: 'center',
           boxShadow: 'var(--shadow-sm)',
@@ -217,7 +217,7 @@ export default function ForecastPage() {
           <div style={{ fontSize: '2rem', marginBottom: '12px' }}>📈</div>
           <div className="label-caps" style={{ color: 'var(--accent)', marginBottom: '10px' }}>Need more data</div>
           <p style={{
-            fontFamily: 'Raleway',
+            fontFamily: 'var(--font-body)',
             color: 'var(--text-muted)',
             fontSize: '0.85rem',
             maxWidth: '380px',

@@ -243,10 +243,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             }}>
               <span style={{ fontSize: '1rem', flexShrink: 0, marginTop: '1px' }}>⚠️</span>
               <div style={{ flex: 1 }}>
-                <div style={{ fontFamily: 'Raleway', fontWeight: 700, fontSize: '0.78rem', color: '#92400e', marginBottom: '2px' }}>
+                <div style={{ fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '0.78rem', color: '#92400e', marginBottom: '2px' }}>
                   Data notice
                 </div>
-                <p style={{ fontFamily: 'Raleway', fontSize: '0.80rem', color: '#92400e', lineHeight: 1.55, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.80rem', color: '#92400e', lineHeight: 1.55, margin: 0 }}>
                   {warning}
                 </p>
               </div>

@@ -25,7 +25,7 @@ export default function MetricCard({
         opacity: 0,
         position: 'relative',
         overflow: 'hidden',
-        backgroundColor: 'var(--bg-card)',
+        background: accent ? 'linear-gradient(140deg, #1e3568, var(--bg-card))' : 'var(--bg-card)',
         border: '1px solid var(--border)',
         borderLeft: accent ? '3px solid var(--sky)' : '1px solid var(--border)',
         borderRadius: 'var(--radius-card)',

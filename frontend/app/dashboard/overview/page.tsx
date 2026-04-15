@@ -13,7 +13,7 @@ function DeltaPill({ value, label }: { value: number; label: string }) {
   return (
     <div style={{
       backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
-      borderRadius: '20px', padding: '20px 24px', boxShadow: 'var(--shadow-sm)',
+      borderRadius: 'var(--radius-card)', padding: '20px 24px', boxShadow: 'var(--shadow-sm)',
     }}>
       <div className="label-caps" style={{ color: 'var(--accent)', marginBottom: '10px' }}>{label}</div>
       <div className="number-display" style={{
@@ -22,7 +22,7 @@ function DeltaPill({ value, label }: { value: number; label: string }) {
       }}>
         {value > 0 ? '+' : ''}{value.toFixed(1)}%
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginTop: '6px', fontFamily: 'Raleway', fontSize: '0.68rem', fontWeight: 700, color: pos ? '#16a34a' : '#dc2626' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginTop: '6px', fontFamily: 'var(--font-body)', fontSize: '0.68rem', fontWeight: 700, color: pos ? '#16a34a' : '#dc2626' }}>
         <span style={{ fontSize: '0.55rem' }}>{pos ? '▲' : '▼'}</span>
         vs prior 30 days
       </div>
@@ -57,8 +57,8 @@ export default function OverviewPage() {
           <div style={{ width: '28px', height: '1px', backgroundColor: 'var(--accent)' }} />
           <span className="label-caps" style={{ color: 'var(--t3)' }}>Performance</span>
         </div>
-        <h1 style={{ color: 'var(--navy)', marginBottom: '14px' }}>Summary</h1>
-        <p style={{ fontFamily: 'Raleway', fontSize: '0.92rem', color: 'var(--t2)', maxWidth: '500px', lineHeight: 1.75 }}>
+        <h1 style={{ color: 'var(--t1)', marginBottom: '14px' }}>Summary</h1>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.92rem', color: 'var(--t2)', maxWidth: '500px', lineHeight: 1.75 }}>
           Last 30 days vs prior 30 days, plus unusual sales days.
         </p>
         <div className="divider" style={{ marginTop: '24px' }} />
@@ -69,10 +69,10 @@ export default function OverviewPage() {
       {slow && loading && (
         <div style={{
           backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
-          borderLeft: '4px solid #d97706', borderRadius: '20px',
+          borderLeft: '4px solid #d97706', borderRadius: 'var(--radius-card)',
           padding: '18px 22px', marginBottom: '24px', boxShadow: 'var(--shadow-xs)',
         }}>
-          <p style={{ fontFamily: 'Raleway', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
+          <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
             This is taking longer than usual — try refreshing in a moment.
           </p>
         </div>
@@ -83,7 +83,7 @@ export default function OverviewPage() {
         <div className="fade-up" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', flexWrap: 'wrap' }}>
           <span style={{
             display: 'inline-flex', alignItems: 'center', gap: '6px',
-            fontFamily: 'Raleway', fontWeight: 800, textTransform: 'uppercase',
+            fontFamily: 'var(--font-body)', fontWeight: 800, textTransform: 'uppercase',
             fontSize: '0.68rem', letterSpacing: '0.14em',
             padding: '8px 20px', borderRadius: '999px',
             color: '#ffffff', backgroundColor: trendColor,
@@ -92,7 +92,7 @@ export default function OverviewPage() {
           </span>
           {data.wow_pct != null && (
             <span style={{
-              fontFamily: 'Raleway', fontWeight: 700, fontSize: '0.80rem',
+              fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '0.80rem',
               color: data.wow_pct >= 0 ? '#16a34a' : '#dc2626',
             }}>
               {data.wow_pct > 0 ? '+' : ''}{data.wow_pct.toFixed(1)}% week-over-week
@@ -105,7 +105,7 @@ export default function OverviewPage() {
       {data?.period_comparison ? (
         <section style={{ marginBottom: '40px' }}>
           <h3 style={{ color: 'var(--t3)', marginBottom: '6px' }}>Period Comparison</h3>
-          <p style={{ fontFamily: 'Raleway', fontSize: '0.78rem', color: 'var(--t2)', marginBottom: '20px' }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.78rem', color: 'var(--t2)', marginBottom: '20px' }}>
             {data.period_comparison!.label_b} ({fmtRev(data.period_comparison!.rev_b)}) vs {data.period_comparison!.label_a} ({fmtRev(data.period_comparison!.rev_a)})
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '24px' }}>
@@ -119,14 +119,14 @@ export default function OverviewPage() {
             {data.period_comparison!.top_risers.length > 0 && (
               <div style={{
                 backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
-                borderLeft: '4px solid #16a34a', borderRadius: '20px',
+                borderLeft: '4px solid #16a34a', borderRadius: 'var(--radius-card)',
                 padding: '20px 22px', boxShadow: 'var(--shadow-sm)',
               }}>
                 <div className="label-caps" style={{ color: '#16a34a', marginBottom: '12px' }}>Rising</div>
                 {data.period_comparison!.top_risers.map((r, i) => (
                   <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 0', borderBottom: i < (data.period_comparison?.top_risers?.length ?? 0) - 1 ? '1px solid var(--border)' : 'none' }}>
-                    <span style={{ fontFamily: 'Raleway', fontSize: '0.85rem', color: 'var(--text-primary)' }}>{r.product}</span>
-                    <span style={{ fontFamily: 'Raleway', fontWeight: 700, fontSize: '0.80rem', color: '#16a34a' }}>+{r.delta_pct.toFixed(1)}%</span>
+                    <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: 'var(--text-primary)' }}>{r.product}</span>
+                    <span style={{ fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '0.80rem', color: '#16a34a' }}>+{r.delta_pct.toFixed(1)}%</span>
                   </div>
                 ))}
               </div>
@@ -134,14 +134,14 @@ export default function OverviewPage() {
             {data.period_comparison!.top_fallers.length > 0 && (
               <div style={{
                 backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
-                borderLeft: '4px solid #dc2626', borderRadius: '20px',
+                borderLeft: '4px solid #dc2626', borderRadius: 'var(--radius-card)',
                 padding: '20px 22px', boxShadow: 'var(--shadow-sm)',
               }}>
                 <div className="label-caps" style={{ color: '#dc2626', marginBottom: '12px' }}>Falling</div>
                 {data.period_comparison!.top_fallers.map((r, i) => (
                   <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 0', borderBottom: i < (data.period_comparison?.top_fallers?.length ?? 0) - 1 ? '1px solid var(--border)' : 'none' }}>
-                    <span style={{ fontFamily: 'Raleway', fontSize: '0.85rem', color: 'var(--text-primary)' }}>{r.product}</span>
-                    <span style={{ fontFamily: 'Raleway', fontWeight: 700, fontSize: '0.80rem', color: '#dc2626' }}>{r.delta_pct.toFixed(1)}%</span>
+                    <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: 'var(--text-primary)' }}>{r.product}</span>
+                    <span style={{ fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '0.80rem', color: '#dc2626' }}>{r.delta_pct.toFixed(1)}%</span>
                   </div>
                 ))}
               </div>
@@ -154,13 +154,13 @@ export default function OverviewPage() {
               {data.period_comparison!.new_products.length > 0 && (
                 <div style={{ backgroundColor: 'rgba(22,163,74,0.06)', border: '1px solid rgba(22,163,74,0.18)', borderRadius: '12px', padding: '10px 14px' }}>
                   <span className="label-caps" style={{ color: '#16a34a', fontSize: '0.55rem' }}>New this period · </span>
-                  <span style={{ fontFamily: 'Raleway', fontSize: '0.80rem', color: 'var(--text-secondary)' }}>{data.period_comparison!.new_products.join(', ')}</span>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.80rem', color: 'var(--text-secondary)' }}>{data.period_comparison!.new_products.join(', ')}</span>
                 </div>
               )}
               {data.period_comparison!.dropped_products.length > 0 && (
                 <div style={{ backgroundColor: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.18)', borderRadius: '12px', padding: '10px 14px' }}>
                   <span className="label-caps" style={{ color: '#dc2626', fontSize: '0.55rem' }}>Not sold this period · </span>
-                  <span style={{ fontFamily: 'Raleway', fontSize: '0.80rem', color: 'var(--text-secondary)' }}>{data.period_comparison!.dropped_products.join(', ')}</span>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.80rem', color: 'var(--text-secondary)' }}>{data.period_comparison!.dropped_products.join(', ')}</span>
                 </div>
               )}
             </div>
@@ -169,10 +169,10 @@ export default function OverviewPage() {
       ) : data && data.has_dates && (
         <div style={{
           backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
-          borderRadius: '20px', padding: '24px', marginBottom: '40px',
+          borderRadius: 'var(--radius-card)', padding: '24px', marginBottom: '40px',
           boxShadow: 'var(--shadow-sm)',
         }}>
-          <p style={{ fontFamily: 'Raleway', fontSize: '0.85rem', color: 'var(--t2)' }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: 'var(--t2)' }}>
             {data.warning ?? 'Need at least 60 days of data for period comparison.'}
           </p>
         </div>
@@ -182,17 +182,17 @@ export default function OverviewPage() {
       {data && (
         <section>
           <h3 style={{ color: 'var(--t3)', marginBottom: '6px' }}>Unusual Days</h3>
-          <p style={{ fontFamily: 'Raleway', fontSize: '0.78rem', color: 'var(--t2)', marginBottom: '20px' }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.78rem', color: 'var(--t2)', marginBottom: '20px' }}>
             Days where revenue was unusually high or low.
           </p>
 
           {data.anomalies.length === 0 ? (
             <div style={{
               backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
-              borderRadius: '20px', padding: '32px', textAlign: 'center',
+              borderRadius: 'var(--radius-card)', padding: '32px', textAlign: 'center',
               boxShadow: 'var(--shadow-sm)',
             }}>
-              <p style={{ fontFamily: 'Raleway', color: 'var(--t2)', fontSize: '0.85rem' }}>
+              <p style={{ fontFamily: 'var(--font-body)', color: 'var(--t2)', fontSize: '0.85rem' }}>
                 No unusual days detected — your revenue is consistent.
               </p>
             </div>
@@ -209,27 +209,27 @@ export default function OverviewPage() {
                       animationDelay: `${i * 40}ms`, opacity: 0,
                       display: 'flex', alignItems: 'center', gap: '16px',
                       backgroundColor: 'var(--surface)', border: '1px solid var(--border)',
-                      borderLeft: `4px solid ${color}`, borderRadius: '16px',
+                      borderLeft: `4px solid ${color}`, borderRadius: 'var(--radius-card)',
                       padding: '14px 20px', boxShadow: 'var(--shadow-xs)',
                     }}
                   >
                     <span style={{ fontSize: '1.1rem', flexShrink: 0 }}>{isSpike ? '📈' : '📉'}</span>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontFamily: 'Raleway', fontWeight: 700, fontSize: '0.85rem', color: 'var(--t2)', marginBottom: '2px' }}>
+                      <div style={{ fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '0.85rem', color: 'var(--t2)', marginBottom: '2px' }}>
                         {a.date_label || a.date}
                         {a.auto_label && <span style={{ fontWeight: 400, color: 'var(--t2)', marginLeft: '8px', fontSize: '0.78rem' }}>· {a.auto_label}</span>}
                       </div>
                       {a.top_product && (
-                        <div style={{ fontFamily: 'Raleway', fontSize: '0.75rem', color: 'var(--t2)' }}>
+                        <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'var(--t2)' }}>
                           Top: {a.top_product}
                         </div>
                       )}
                     </div>
                     <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                      <div style={{ fontFamily: 'Cormorant, serif', fontSize: '1.3rem', fontWeight: 500, color }}>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.3rem', fontWeight: 500, color }}>
                         {currency}{a.revenue.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
                       </div>
-                      <div style={{ fontFamily: 'Raleway', fontSize: '0.68rem', color: 'var(--t2)', marginTop: '1px' }}>
+                      <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.68rem', color: 'var(--t2)', marginTop: '1px' }}>
                         {a.pct_above > 0 ? '+' : ''}{Math.abs(a.pct_above).toFixed(0)}% vs typical
                       </div>
                     </div>
@@ -254,14 +254,14 @@ export default function OverviewPage() {
         <div style={{
           backgroundColor: 'var(--surface)',
           border: '1px solid var(--border)',
-          borderRadius: '20px',
+          borderRadius: 'var(--radius-card)',
           padding: '48px 28px',
           textAlign: 'center',
           boxShadow: 'var(--shadow-sm)',
         }}>
           <div style={{ fontSize: '2rem', marginBottom: '12px' }}>📊</div>
           <div className="label-caps" style={{ color: 'var(--accent)', marginBottom: '10px' }}>No data available</div>
-          <p style={{ fontFamily: 'Raleway', color: 'var(--t2)', fontSize: '0.85rem', maxWidth: '360px', margin: '0 auto', lineHeight: 1.65 }}>
+          <p style={{ fontFamily: 'var(--font-body)', color: 'var(--t2)', fontSize: '0.85rem', maxWidth: '360px', margin: '0 auto', lineHeight: 1.65 }}>
             Upload a file with at least 30 days of sales history to unlock the Overview.
           </p>
         </div>
