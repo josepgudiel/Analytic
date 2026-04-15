@@ -9,25 +9,10 @@ import pandas as pd
 
 # ─── Candidate column name lists ────────────────────────────────────────────
 
-PRODUCT_CANDIDATES = [
-    "product", "item", "product_name", "item_name", "sku", "description",
-    "beverage", "drink", "menu_item", "line_item", "product_desc", "item_desc",
-    "article", "service",
-    "product_code", "item_code", "item_number", "part_number", "product_title",
-    "title", "label", "variant", "option",
-    "lineitem_name", "lineitem name", "lineitem",
-    "item_description", "product_description",
-    "menu_item_name", "menu item", "menu item name",
-    "item name", "product name",
-    "variant_name", "variant name",
-    # Services / beauty / wellness
-    "treatment", "treatment name", "treatment_name",
-    "service name", "service_name", "service_type",
-    # Common Kaggle / generic dataset columns
-    "category", "product_category", "product category",
-    "sub_category", "sub category", "subcategory",
-    "product_line", "product line", "brand",
-    "product_group", "product group", "goods",
+PRODUCT_SYNONYMS = [
+    "product", "item", "name", "sku", "description", "menu",
+    "service", "treatment", "coffee", "drink", "food", "title",
+    "product name", "item name", "menu item", "coffee name",
 ]
 QTY_CANDIDATES = [
     "quantity", "qty", "units", "pieces", "volume",
@@ -37,26 +22,12 @@ QTY_CANDIDATES = [
     # Additional common variations
     "count", "item_qty", "num_sold", "# items",
 ]
-REVENUE_CANDIDATES = [
-    "revenue", "extended_price", "line_total",
-    "subtotal", "price_total", "gross_sales", "revenue_total", "sale_amount",
-    "extended", "line_amount", "net_sales", "net_amount", "sale_total",
-    "total_price", "total_revenue", "net_revenue",
-    "invoice_total", "line_value", "amount_paid", "total_amount",
-    "gross_amount",
-    "net_total", "total_retail_price",
-    "order_total_amount",
-    "item_total", "item total", "check_amount", "check amount",
-    "transaction_amount", "transaction amount",
-    "ticket_total", "ticket total",
-    "sales_amount", "sales amount", "total_sales", "total sales",
-    "final_price", "final price",
-    # Clover, Lightspeed, and generic POS exports
-    "total", "lineitem price", "line item price",
-    "total incl tax", "total incl. tax", "total including tax",
-    # Common Kaggle / generic dataset columns
-    "sales", "amount", "order_amount", "order amount",
-    "turnover", "income", "proceeds", "value",
+REVENUE_SYNONYMS = [
+    "revenue", "price", "money", "amount", "total", "sale", "sales",
+    "gross", "net", "transaction", "charge", "cost", "value",
+    "sale amount", "total amount", "gross sales", "net sales",
+    "transaction amount", "sale total", "order total", "payment",
+    "subtotal", "sub total", "line total", "ext price", "extended price",
 ]
 UNIT_PRICE_CANDIDATES = [
     "unit_price", "unit price", "unitprice", "price_per_unit",
@@ -66,17 +37,9 @@ UNIT_PRICE_CANDIDATES = [
     # Common Kaggle columns
     "mrp", "rate", "price_each", "price each",
 ]
-DATE_CANDIDATES = [
-    "date", "timestamp", "datetime", "order_date", "transaction_date",
-    "sale_date", "created_at", "order_time", "transaction_time",
-    "invoice_date", "purchase_date", "sold_at", "completed_at",
-    "business_date", "business date",
-    "receipt_date", "receipt date",
-    "created_date", "created date", "closed_date", "closed date",
-    "check_date", "check date",
-    "paid_at", "paid at",
-    "date_time", "date time",
-    "payment_date", "payment date",
+DATE_SYNONYMS = [
+    "date", "time", "created", "timestamp", "transaction date",
+    "sale date", "order date", "datetime", "when", "day",
 ]
 LOCATION_CANDIDATES = [
     "location", "store", "outlet", "branch", "place", "site", "shop", "venue",
@@ -138,33 +101,21 @@ def _normalize_col_name(s: str) -> str:
 
 
 def _find_col(df: pd.DataFrame, candidates: list) -> str | None:
-    """Find first column whose name (lowercase) contains any candidate."""
-    cols_lower = {c.lower().strip(): c for c in df.columns if isinstance(c, str)}
-    cols_normalized = {k: _normalize_col_name(k) for k in cols_lower}
+    """Find first column whose name matches any candidate via substring check."""
     for cand in candidates:
-        cand_norm = cand.replace("_", " ")
-        for k, v in cols_lower.items():
-            k_norm = k.replace(" ", "_")
-            k_clean = cols_normalized[k]
-            cand_words = set(cand_norm.split())
-            k_words = set(k.split())
-            k_norm_words = set(k_norm.split("_"))
-            k_clean_words = set(k_clean.split())
-            if (
-                cand_words.issubset(k_words)
-                or cand_words.issubset(k_norm_words)
-                or cand_words.issubset(k_clean_words)
-                or (len(k) >= 4 and len(k_words) >= 2 and k_words.issubset(cand_words))
-                or (len(k_norm) >= 4 and len(k_norm_words) >= 2 and k_norm_words.issubset(cand_words))
-                or (len(k_clean) >= 4 and len(k_clean_words) >= 2 and k_clean_words.issubset(cand_words))
-            ):
-                return v
+        cand_clean = cand.lower().strip().replace("_", " ")
+        for col in df.columns:
+            if not isinstance(col, str):
+                continue
+            col_clean = col.lower().strip().replace("_", " ")
+            if cand_clean in col_clean or col_clean in cand_clean:
+                return col
     return None
 
 
 def _detect_columns(df: pd.DataFrame) -> dict:
     """Auto-detect columns for product, quantity, revenue/unit_price, date, location, cost, transaction_id."""
-    product_col = _find_col(df, PRODUCT_CANDIDATES)
+    product_col = _find_col(df, PRODUCT_SYNONYMS)
     if product_col is None:
         name_col = next((c for c in df.columns if c.strip().lower() == "name"), None)
         if name_col and not any("customer" in c.lower() or "client" in c.lower() for c in df.columns):
@@ -172,9 +123,9 @@ def _detect_columns(df: pd.DataFrame) -> dict:
     mapping = {
         "product": product_col or (df.columns[0] if len(df.columns) > 0 else None),
         "quantity": _find_col(df, QTY_CANDIDATES),
-        "revenue": _find_col(df, REVENUE_CANDIDATES),
+        "revenue": _find_col(df, REVENUE_SYNONYMS),
         "unit_price": _find_col(df, UNIT_PRICE_CANDIDATES),
-        "date": _find_col(df, DATE_CANDIDATES),
+        "date": _find_col(df, DATE_SYNONYMS),
         "location": _find_col(df, LOCATION_CANDIDATES),
         "cost": _find_col(df, COST_CANDIDATES),
         "transaction_id": _find_col(df, TRANSACTION_CANDIDATES),
@@ -320,7 +271,7 @@ def _prepare_data_impl(raw_df: pd.DataFrame, mapping_override: dict | None = Non
         needed["revenue"] = unit_price * needed["quantity"]
     else:
         cols_preview = ", ".join(list(raw_df.columns)[:8])
-        return None, f"No revenue or price column detected. Your columns: {cols_preview}. Rename one to 'revenue' or 'price'."
+        return None, f"We couldn't detect a sales/revenue column. Your columns: {cols_preview}. Please rename your revenue column to 'revenue' or 'total'."
 
     _date_dayfirst_detected = False
     date_col = mapping.get("date")
